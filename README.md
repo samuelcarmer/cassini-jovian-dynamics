@@ -4,7 +4,7 @@ Research project conducted at New Mexico Tech under Dr. Raul Morales-Juberías.
 
 ## Objective
 
-Track the motion of atmospheric structures in Cassini imagery and estimate dynamical properties of Jovian vortices.
+Track the motion of an atmospheric structure in Cassini imagery and estimate dynamical properties.
 
 ## Methods
 
