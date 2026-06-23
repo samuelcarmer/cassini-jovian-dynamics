@@ -1,6 +1,6 @@
 # Analysis of Jovian Atmospheric Dynamics
 
-Research project conducted at New Mexico Tech under Dr. Raul Morales-Juberías.
+Research project conducted at New Mexico Tech under Dr. Raúl Morales-Juberías.
 
 ## Objective
 
