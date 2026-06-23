@@ -14,8 +14,8 @@ def find_t_space(images_list,images_shape,Period=9.92492):
     dx     = 360./lon_length #According to Limings 2004 paper for the movie this should be 0.1 
     #degrot0 = -0.2160
 
-    period_file_path = '/Users/samuelcarmer/Documents/Cassini/CassiniHighRes/periods.xlsx'
-
+    period_file_path = ""
+    
     df = read_excel(period_file_path)
     deltaP = df.iloc[:num_images,0].to_numpy() 
     thour = Period * np.concatenate(([0], np.cumsum(deltaP[:-1]))) # hours gone by every frame
@@ -150,39 +150,3 @@ def shift_image(image_set,shift):
 
 
 
-
-
-
-
-def rot_correction(images_list,images_shape):
-    from pandas import read_excel
-    import numpy as np
-
-    num_images = len(images_list)
-
-    lon_length = images_shape[1]
-    dx     = 360./lon_length #According to Limings 2004 paper for the movie this should be 0.1 
-    Period = 9.92492 #nasa measurements
-    Period = 10.0
-    #degrot0 = -0.2160
-
-    period_file_path = '/Users/samuelcarmer/Documents/Cassini/CassiniHighRes/periods.xlsx'
-
-    df = read_excel(period_file_path)
-    deltaP = df.iloc[:num_images,0].to_numpy() 
-    thour = Period * np.concatenate(([0], np.cumsum(deltaP[:-1]))) # hours gone by every frame
-    deg_per_hr = 360/Period # one rotation per period
-
-    print(deltaP)
-
-    
-    for i in range(num_images):
-
-        pixel_shift = int(thour[i]* deg_per_hr /dx )
-        nshift = int(0.216*i*(Period/24)/dx) #raul method
-        #images_list[i]=np.roll(images_list[i],nshift,axis=1) #raul method
-        #images_list[i]=np.roll(images_list[i],pixel_shift,axis=1)
-        
-        print(f' pixelshift: {pixel_shift}')
-    
-    return images_list, thour
